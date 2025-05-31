@@ -1,7 +1,8 @@
 name: Build IP4P Wireguard Apk
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - "release-*"
 
 jobs:
   build:
