@@ -2,7 +2,7 @@ name: Build IP4P Wireguard Apk
 on:
   push:
     tags:
-      - "release-*"
+      - "*-IP4P-release"
 
 jobs:
   build:
@@ -32,7 +32,7 @@ jobs:
           keyStorePassword: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           keyPassword: ${{ secrets.ANDROID_KEY_PASSWORD }}
           buildToolsVersion: 36.0.0
-      - run: mv ${{steps.sign_app.outputs.signedReleaseFile}} Wireguard-IP4P_$GITHUB_REF_NAME.apk
+      - run: mv ${{steps.sign_app.outputs.signedFile}} Wireguard_$GITHUB_REF_NAME.apk
       - uses: ncipollo/release-action@v1
         with:
           artifacts: "*.apk"
