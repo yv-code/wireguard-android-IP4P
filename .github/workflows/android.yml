@@ -19,7 +19,8 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: wrapper
-          arguments: assembleRelease
+      - name: Build Apk
+        run: ./gradlew assembleRelease
       - uses: ilharp/sign-android-release@v2
         id: sign_app
         with:
